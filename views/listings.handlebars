@@ -10,15 +10,29 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!-- DataTables JS -->
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+  <style>
+        .dataTables_wrapper {
+            width: 80%;
+            margin: 0 auto; /* Center the table wrapper */
+        }
+        #tableTitle {
+            text-align: center;
+            font-size: 24px; /* Set the font size for the table title */
+            margin-top: 20vh;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <table id="listingsTable" class="display" style="width:100%">
+  <h1 id="tableTitle">All Data</h1> 
+    <table id="listingsTable" class="display" style="width:100%,">
         <thead>
             <tr>
                 <th>Listing ID</th>
+                <th>Site/Broker</th>
                 <th>Listing Date</th>
                 <th>Listing Month</th>
-                <th>Site Id</th>
                 <th>Revenue</th>
             </tr>
         </thead>
@@ -26,9 +40,9 @@
             {{#each listings}}
             <tr>
                 <td>{{this.id}}</td>
+                <td>{{this.broker}}</td>
                 <td>{{this.listing_date}}</td>
                 <td>{{this.listing_month}}</td>
-                <td>{{this.broker}}</td>
                 <td>{{this.revenue}}</td>
             </tr>
             {{/each}}
