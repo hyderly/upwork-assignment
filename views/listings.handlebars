@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listings Data</title>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- DataTables JS -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+    <table id="listingsTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Listing ID</th>
+                <th>Listing Date</th>
+                <th>Listing Month</th>
+                <th>Site Id</th>
+                <th>Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each listings}}
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.listing_date}}</td>
+                <td>{{this.listing_month}}</td>
+                <td>{{this.broker}}</td>
+                <td>{{this.revenue}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $('#listingsTable').DataTable({
+                "paging": true, // Enable pagination
+                "ordering": true, // Enable column sorting
+                "info": true, // Shows table information
+                "searching": true // Enables the search functionality
+            });
+        });
+    </script>
+    
+</body>
+</html>
