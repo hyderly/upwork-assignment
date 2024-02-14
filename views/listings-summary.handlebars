@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listings Summary</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="listingsChart"></canvas>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const listingsSummary = JSON.parse('{{{listingsSummary}}}');
+        const ctx = document.getElementById('listingsChart').getContext('2d');
+        
+        const datasets = [];
+        const colors = ['rgb(75, 192, 192)', 'rgb(255, 159, 64)', 'rgb(153, 102, 255)']; // Example colors
+        let colorIndex = 0;
+
+        Object.keys(listingsSummary).forEach((site, index) => {
+          const siteData = listingsSummary[site];
+          datasets.push({
+            label: `${site} - Total Listings`,
+            data: siteData.totalListings,
+            borderColor: colors[colorIndex % colors.length],
+            yAxisID: 'y',
+          });
+          colorIndex++;
+          datasets.push({
+            label: `${site} - Average Revenue`,
+            data: siteData.averageRevenue,
+            borderColor: colors[colorIndex % colors.length],
+            yAxisID: 'y1',
+          });
+          colorIndex++;
+        });
+
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: listingsSummary[Object.keys(listingsSummary)[0]].months,
+            datasets: datasets,
+          },
+          options: {
+            scales: {
+              y: {
+                type: 'linear',
+                display: true,
+                position: 'left',
+                title: {
+                  display: true,
+                  text: 'Total Listings',
+                },
+              },
+              y1: {
+                type: 'linear',
+                display: true,
+                position: 'right',
+                title: {
+                  display: true,
+                  text: 'Average Revenue ($)',
+                },
+                grid: {
+                  drawOnChartArea: false,
+                },
+              },
+            },
+          },
+        });
+      });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listings Summary</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="listingsChart"></canvas>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const listingsSummary = JSON.parse('{{{listingsSummary}}}');
+        const ctx = document.getElementById('listingsChart').getContext('2d');
+        
+        const datasets = [];
+        const colors = ['rgb(75, 192, 192)', 'rgb(255, 159, 64)', 'rgb(153, 102, 255)']; // Example colors
+        let colorIndex = 0;
+
+        Object.keys(listingsSummary).forEach((site, index) => {
+          const siteData = listingsSummary[site];
+          datasets.push({
+            label: `${site} - Total Listings`,
+            data: siteData.totalListings,
+            borderColor: colors[colorIndex % colors.length],
+            yAxisID: 'y',
+          });
+          colorIndex++;
+          datasets.push({
+            label: `${site} - Average Revenue`,
+            data: siteData.averageRevenue,
+            borderColor: colors[colorIndex % colors.length],
+            yAxisID: 'y1',
+          });
+          colorIndex++;
+        });
+
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: listingsSummary[Object.keys(listingsSummary)[0]].months,
+            datasets: datasets,
+          },
+          options: {
+            scales: {
+              y: {
+                type: 'linear',
+                display: true,
+                position: 'left',
+                title: {
+                  display: true,
+                  text: 'Total Listings',
+                },
+              },
+              y1: {
+                type: 'linear',
+                display: true,
+                position: 'right',
+                title: {
+                  display: true,
+                  text: 'Average Revenue ($)',
+                },
+                grid: {
+                  drawOnChartArea: false,
+                },
+              },
+            },
+            
+          },
+        });
+      });
+    </script>
+</body>
+</html>
