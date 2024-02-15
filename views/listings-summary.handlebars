@@ -15,14 +15,20 @@
         display: block;
         margin-top: 40px;
       }
-      #listingsChart{
-        height: 75vh !important;
 
-      }
+      .chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+      
     </style>
 </head>
 <body>
-    <canvas id="listingsChart"></canvas>
+    <div class="chart-container">
+        <canvas id="listingsChart"></canvas>
+    </div>
     <a class="link-page" href="/listings">Go to Table View</a>
     <script>
       document.addEventListener('DOMContentLoaded', function() {

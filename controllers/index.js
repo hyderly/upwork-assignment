@@ -36,28 +36,26 @@ const listingSummary = async (req, res) => {
   try {
     const queryText = `
       SELECT 
-        d.site_id AS site,
-        s.title AS site_title,
-        TO_CHAR(d.listing_date, 'FMMonth YYYY') AS listing_month,
-        COUNT(d.id) AS total_listings,
-        AVG(d.revenue)::numeric AS average_revenue
+      d.site_id AS site,
+      s.title AS site_title,
+      TO_CHAR(d.listing_date, 'FMMonth YYYY') AS listing_month,
+      COUNT(d.id) AS total_listings,
+      AVG(d.revenue)::numeric AS average_revenue
       FROM 
-        deals d
+          deals d
       INNER JOIN 
-        sites s ON s.id = d.site_id
+          sites s ON s.id = d.site_id
       WHERE 
-        d.listing_date BETWEEN '2020-11-01' AND '2021-11-30'
+          d.listing_date BETWEEN '2020-11-01' AND '2021-11-30'
       GROUP BY 
-        d.site_id, s.title, listing_month
+          d.site_id, s.title, TO_CHAR(d.listing_date, 'FMMonth YYYY')
       ORDER BY 
-        d.site_id, listing_month;
-    `;
+          to_date(TO_CHAR(d.listing_date, 'FMMonth YYYY'), 'Month YYYY');
+      `;
 
-    const result = await pool.query(queryText);
+        const result = await pool.query(queryText);
 
 
-
-        // Continue from above...
         const listingsSummary = result.rows.reduce((acc, { site, site_title, listing_month, total_listings, average_revenue }) => {
           if (!acc[site]) {
             acc[site] = { siteTitle: site_title, months: [], totalListings: [], averageRevenue: [] };
@@ -67,7 +65,7 @@ const listingSummary = async (req, res) => {
           acc[site].averageRevenue.push(average_revenue);
           return acc;
         }, {});
-    
+
         res.render('listings-summary', { listingsSummary: JSON.stringify(listingsSummary) });
       } catch (err) {
         console.error('Error executing listings summary query', err.stack);
