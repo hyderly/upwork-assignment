@@ -3,7 +3,6 @@ const { engine } = require('express-handlebars');
 
 require('dotenv').config();
 
-const pool = require('./db/index.js');
 
 const listingRoute = require("./routes/index.js");
 
