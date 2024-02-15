@@ -21,8 +21,8 @@ const listings = async (req, res) => {
     `);
     const listings = queryResult.rows.map(row => ({
       ...row,
-      listing_date: row.listing_date.toISOString().split('T')[0], // Format listing_date as YYYY-MM-DD
-      listing_month: row.listing_month.trim() // Ensure the month name does not have trailing spaces
+      listing_date: row.listing_date.toISOString().split('T')[0], 
+      listing_month: row.listing_month.trim()
     }));
     res.render('listings', { listings }); // 'listings' is the name of your Handlebars template
   } catch (err) {
