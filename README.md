@@ -5,10 +5,34 @@ This is a simple upwork assignment project to demo technical skills in Node, Exp
 ## Live Link:
 https://upwork-assignment-production.up.railway.app/
 
-## Requirement to run on local machine:
 
-1- Nodejs installed on the machine
-2- Env file
+## Requirements to run on local machine
+
+
+
+`Nodejs`
+
+`Env file`
+
+
+
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`PORT`
+
+`DB_USER`
+
+`DB_HOST`
+
+`DB_NAME`
+
+`DB_PASSWORD`
+
+`DB_PORT`
 
 ## Installation
 
@@ -27,3 +51,9 @@ npm run dev
 
 
 ```
+
+## Local URL
+
+http://localhost:${PORT} (this port is from env file)
+
+
