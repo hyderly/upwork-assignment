@@ -5,6 +5,11 @@ This is a simple upwork assignment project to demo technical skills in Node, Exp
 ## Live Link:
 https://upwork-assignment-production.up.railway.app/
 
+## Requirement to run on local machine:
+
+1- Nodejs installed on the machine
+2- Env file
+
 ## Installation
 
 
