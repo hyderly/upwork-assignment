@@ -19,13 +19,23 @@
         #tableTitle {
             text-align: center;
             font-size: 24px; /* Set the font size for the table title */
-            margin-top: 20vh;
+            margin-top: 20px;
             margin-bottom: 20px;
+        }
+
+        .link-page{
+            text-decoration: underline;
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+            color: #222;
+            display: block;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
-  <h1 id="tableTitle">All Data</h1> 
+  <h1 id="tableTitle">All Listing</h1> 
     <table id="listingsTable" class="display" style="width:100%,">
         <thead>
             <tr>
@@ -48,6 +58,8 @@
             {{/each}}
         </tbody>
     </table>
+
+    <a class="link-page" href="/">Go to Statistics</a>
 
     <script>
         $(document).ready(function() {
